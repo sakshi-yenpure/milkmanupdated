@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milkman API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 { color: #2f7d32; }
+        p { color: #666; }
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .activities {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .activity-item {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #2f7d32;
+        }
+        .activity-item span {
+            font-size: 0.8rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Milkman Backend API</h1>
+        <p>The server is running successfully.</p>
+        <div class="status">● System Active</div>
+        
+        <div class="activities">
+            <h3>Recent User Activities</h3>
+            {% if activities %}
+                {% for activity in activities %}
+                <div class="activity-item">
+                    <strong>{{ activity.email }}</strong> {{ activity.action }}
+                    <br><span>{{ activity.time }}</span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="muted">No recent logins or signups recorded yet.</p>
+            {% endif %}
+        </div>
+
+        <p style="margin-top: 2rem; font-size: 0.9rem;">To access the frontend, please visit <a href="http://localhost:5173" style="color: #2f7d32; text-decoration: none; font-weight: bold;">localhost:5173</a></p>
+    </div>
+</body>
+</html>
